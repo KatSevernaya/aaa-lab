@@ -1,0 +1,29 @@
+@function strip-units($number) {
+    @return $number / ($number * 0 + 1);
+}
+
+@mixin font-r($maxFz, $minFz,  $weight:false, $color:false) {
+    $minRem: $minFz / 16 + rem;
+    $maxRem: $maxFz / 16 + rem;
+
+    $raznostFz: strip-units($maxFz - $minFz);
+
+    @media (max-width: 320px) {
+        font-size: $minRem
+    }
+
+    @media (min-width: 1440px) {
+        font-size: $maxRem
+    }
+
+    @media (max-width: 1440px) {
+        font-size: calc(#{$minRem} + #{$raznostFz} * (100vw - 320px) / 1120)
+    }
+    @if $weight {
+        font-weight: $weight;
+    }
+    @if $color {
+        color: $color;
+    }
+}
+

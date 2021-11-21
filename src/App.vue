@@ -1,26 +1,45 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div class="page">
+  <the-header></the-header>
+  <section class="content">
+    <the-banner></the-banner>
+    <the-filter
+      @set-category="setCategory"
+    ></the-filter>
+    <the-catalog
+      :category="category"
+    ></the-catalog>
+  </section>
+  <the-footer></the-footer>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import './assets/scss/style.scss';
+import TheHeader from './components/TheHeader.vue';
+import TheBanner from './components/TheBanner.vue';
+import TheFooter from './components/TheFooter.vue';
+import TheFilter from './components/TheFilter.vue';
+import TheCatalog from './components/TheCatalog.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    TheHeader, TheBanner, TheFooter, TheFilter, TheCatalog,
+  },
+  data() {
+    return {
+      category: 'all',
+    };
+  },
+  methods: {
+    setCategory(cat) {
+      this.category = cat;
+    },
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>

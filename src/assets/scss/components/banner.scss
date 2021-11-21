@@ -1,0 +1,39 @@
+.banner {
+    padding-top: 100px;
+    @media screen and (max-width: 992px) {
+        padding-top: 50px;
+    }
+    @media screen and (max-width: 480px) {
+        padding-top: 30px;
+    }
+}
+.banner__content {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+}
+.banner__title {
+    @include font-r(86, 25);
+    line-height: 105%;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    margin: 0;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-weight: normal;
+    span {
+        font-family: 'Lora';
+    }
+}
+.banner__img {
+    margin: 0 auto;    
+    width: 40%;
+    img {
+        width: 100%;
+    }
+}
